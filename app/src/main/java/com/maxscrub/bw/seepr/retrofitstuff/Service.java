@@ -7,7 +7,7 @@ import retrofit2.http.GET;
 
 public interface Service {
 
-    @GET("/users/bmwanz/repos")
-    Call<ItemResponse> getRepos();
+    @GET("/repos/bmwanz/SeePR/pulls")
+    Call<ItemResponse> getPulls();
 
 }
