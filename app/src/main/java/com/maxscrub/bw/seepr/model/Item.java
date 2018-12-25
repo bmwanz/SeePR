@@ -21,11 +21,16 @@ public class Item {
     @Expose
     private String prTitle;
 
-    public Item(String prID, int prNumber, String prState, String prTitle) {
+    @SerializedName("diff_url")
+    @Expose
+    private String diffUrl;
+
+    public Item(String prID, int prNumber, String prState, String prTitle, String diffUrl) {
         this.prID = prID;
         this.prNumber = prNumber;
         this.prState = prState;
         this.prTitle = prTitle;
+        this.diffUrl = diffUrl;
     }
 
     public String getPrID() {
@@ -43,4 +48,6 @@ public class Item {
     public String getPrTitle() {
         return prTitle;
     }
+
+    public String getDiffUrl() { return diffUrl; }
 }

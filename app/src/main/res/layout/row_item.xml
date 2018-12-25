@@ -15,11 +15,11 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/prName"
+            android:id="@+id/prTitle"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
-            android:text="@string/pr_name"
+            android:text="@string/pr_title"
             android:textAppearance="?android:textAppearanceLarge"
             android:textStyle="bold" />
 
