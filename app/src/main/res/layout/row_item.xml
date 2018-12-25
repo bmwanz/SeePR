@@ -15,13 +15,17 @@
         android:layout_height="match_parent">
 
         <TextView
-            android:id="@+id/prName"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:id="@+id/prTitle"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
             android:layout_centerInParent="true"
-            android:text="@string/pr_name"
+            android:text="@string/pr_title"
             android:textAppearance="?android:textAppearanceLarge"
-            android:textStyle="bold" />
+            android:textStyle="bold"
+            android:paddingTop="30dp"
+            android:paddingBottom="30dp"
+            android:paddingStart="20dp"
+            android:paddingEnd="0dp"/>
 
     </RelativeLayout>
 

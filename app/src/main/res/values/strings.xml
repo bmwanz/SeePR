@@ -1,5 +1,4 @@
 <resources>
     <string name="app_name">SeePR</string>
-    <string name="disconnected">Internet disconnected</string>
-    <string name="pr_name">Pull Request Name</string>
+    <string name="pr_title">Pull Request Title</string>
 </resources>
