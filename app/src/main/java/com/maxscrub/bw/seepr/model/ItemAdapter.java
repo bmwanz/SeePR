@@ -61,6 +61,13 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
                         Intent intent = new Intent(context, DiffActivity.class);
                         intent.putExtra("pullTitle", itemResponses.get(position).getPrTitle());
                         intent.putExtra("diffUrl", itemResponses.get(position).getDiffUrl());
+
+                        if (BuildConfig.DEBUG) {
+                            Timber.d("PullTitle = %s, DiffUrl = %s",
+                                    itemResponses.get(position).getPrTitle(),
+                                    itemResponses.get(position).getDiffUrl());
+                        }
+
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);
 

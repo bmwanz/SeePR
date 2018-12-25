@@ -8,7 +8,6 @@ import android.support.v7.widget.RecyclerView;
 
 import com.maxscrub.bw.seepr.model.Item;
 import com.maxscrub.bw.seepr.model.ItemAdapter;
-import com.maxscrub.bw.seepr.model.ItemResponse;
 import com.maxscrub.bw.seepr.retrofitstuff.Client;
 import com.maxscrub.bw.seepr.retrofitstuff.Service;
 

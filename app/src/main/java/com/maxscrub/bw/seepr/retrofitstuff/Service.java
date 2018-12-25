@@ -1,7 +1,6 @@
 package com.maxscrub.bw.seepr.retrofitstuff;
 
 import com.maxscrub.bw.seepr.model.Item;
-import com.maxscrub.bw.seepr.model.ItemResponse;
 
 import java.util.List;
 
