@@ -1,5 +1,6 @@
 package com.maxscrub.bw.seepr;
 
+import android.support.annotation.NonNull;
 import android.support.v4.widget.SwipeRefreshLayout;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,7 +22,6 @@ import timber.log.Timber;
 public class MainActivity extends AppCompatActivity {
 
     private RecyclerView recyclerView;
-    private Item item;
     private SwipeRefreshLayout swipeContainer;
     List<Item> pullList = null;
 
@@ -63,8 +63,7 @@ public class MainActivity extends AppCompatActivity {
 
             call.enqueue(new Callback<List<Item>>() {
                 @Override
-                public void onResponse(Call<List<Item>> call, Response<List<Item>> response) {
-//                    List<Item> items = response.body().getPulls();
+                public void onResponse(@NonNull Call<List<Item>> call, @NonNull Response<List<Item>> response) {
                     pullList = response.body();
                     recyclerView.setAdapter(new ItemAdapter(getApplicationContext(), pullList));
                     recyclerView.smoothScrollToPosition(0);
@@ -72,7 +71,7 @@ public class MainActivity extends AppCompatActivity {
                 }
 
                 @Override
-                public void onFailure(Call<List<Item>> call, Throwable t) {
+                public void onFailure(@NonNull Call<List<Item>> call, @NonNull Throwable t) {
                     if (BuildConfig.DEBUG) {
                         Timber.e("loadJSON onFailure - %s", t.getMessage());
                     }
