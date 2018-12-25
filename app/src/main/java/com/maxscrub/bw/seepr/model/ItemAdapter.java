@@ -19,28 +19,28 @@ import timber.log.Timber;
 public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
 
     private Context context;
-    private List<Item> items;
+    private List<Item> itemResponses;
 
     public ItemAdapter(Context applicationContext, List<Item> itemList) {
         this.context = applicationContext;
-        this.items = itemList;
+        this.itemResponses = itemList;
     }
 
     @Override
-    public ItemAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.row_item, viewGroup, false);
+    public ItemAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
+        View view = LayoutInflater.from(context).inflate(R.layout.row_item, null);
 //        view.setOnClickListener(recyclerViewItemOnClickListener);
         return new ViewHolder(view);
     }
 
     @Override
-    public void onBindViewHolder(ItemAdapter.ViewHolder viewHolder, int i) {
-        viewHolder.prTitle.setText(items.get(i).getPrTitle());
+    public void onBindViewHolder(ItemAdapter.ViewHolder viewHolder, int position) {
+        viewHolder.prTitle.setText(itemResponses.get(position).getPrTitle());
     }
 
     @Override
     public int getItemCount() {
-        return items.size();
+        return itemResponses.size();
     }
 
 
@@ -50,17 +50,17 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
 
         public ViewHolder(View view) {
             super(view);
-            prTitle = (TextView) view.findViewById(R.id.prTitle);
+            prTitle = view.findViewById(R.id.prTitle);
 
             view.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     int position = getAdapterPosition();
                     if (position != RecyclerView.NO_POSITION) {
-                        Item clickedData = items.get(position);
+                        Item clickedData = itemResponses.get(position);
                         Intent intent = new Intent(context, DiffActivity.class);
-                        intent.putExtra("pullTitle", items.get(position).getPrTitle());
-                        intent.putExtra("diffUrl", items.get(position).getDiffUrl());
+                        intent.putExtra("pullTitle", itemResponses.get(position).getPrTitle());
+                        intent.putExtra("diffUrl", itemResponses.get(position).getDiffUrl());
                         intent.addFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
                         context.startActivity(intent);
 

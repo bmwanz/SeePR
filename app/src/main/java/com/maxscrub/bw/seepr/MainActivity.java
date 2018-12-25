@@ -5,8 +5,6 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.view.View;
-import android.widget.TextView;
 
 import com.maxscrub.bw.seepr.model.Item;
 import com.maxscrub.bw.seepr.model.ItemAdapter;
@@ -26,6 +24,7 @@ public class MainActivity extends AppCompatActivity {
     private RecyclerView recyclerView;
     private Item item;
     private SwipeRefreshLayout swipeContainer;
+    List<Item> pullList = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -60,19 +59,21 @@ public class MainActivity extends AppCompatActivity {
         try {
             Client client = new Client();
             Service apiService = client.getClient().create(Service.class);
-            Call<ItemResponse> call = apiService.getPulls();
 
-            call.enqueue(new Callback<ItemResponse>() {
+            Call<List<Item>> call = apiService.getPulls();
+
+            call.enqueue(new Callback<List<Item>>() {
                 @Override
-                public void onResponse(Call<ItemResponse> call, Response<ItemResponse> response) {
-                    List<Item> items = response.body().getPulls();
-                    recyclerView.setAdapter(new ItemAdapter(getApplicationContext(), items));
+                public void onResponse(Call<List<Item>> call, Response<List<Item>> response) {
+//                    List<Item> items = response.body().getPulls();
+                    pullList = response.body();
+                    recyclerView.setAdapter(new ItemAdapter(getApplicationContext(), pullList));
                     recyclerView.smoothScrollToPosition(0);
                     swipeContainer.setRefreshing(false);
                 }
 
                 @Override
-                public void onFailure(Call<ItemResponse> call, Throwable t) {
+                public void onFailure(Call<List<Item>> call, Throwable t) {
                     if (BuildConfig.DEBUG) {
                         Timber.e("loadJSON onFailure - %s", t.getMessage());
                     }
