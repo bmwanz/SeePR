@@ -29,7 +29,6 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
     @Override
     public ItemAdapter.ViewHolder onCreateViewHolder(ViewGroup viewGroup, int viewType) {
         View view = LayoutInflater.from(context).inflate(R.layout.row_item, null);
-//        view.setOnClickListener(recyclerViewItemOnClickListener);
         return new ViewHolder(view);
     }
 
@@ -80,11 +79,4 @@ public class ItemAdapter extends RecyclerView.Adapter<ItemAdapter.ViewHolder> {
         }
 
     }
-
-//    private final View.OnClickListener recyclerViewItemOnClickListener = new View.OnClickListener() {
-//        @Override
-//        public void onClick(View v) {
-//
-//        }
-//    }
 }

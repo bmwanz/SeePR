@@ -1,21 +1,15 @@
 package com.maxscrub.bw.seepr;
 
+import android.annotation.SuppressLint;
 import android.os.AsyncTask;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
-
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
-
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.URL;
 import java.util.Objects;
-
 import javax.net.ssl.HttpsURLConnection;
-
 import timber.log.Timber;
 
 
@@ -33,12 +27,13 @@ public class DiffActivity extends AppCompatActivity {
         new getData(diffUrl).execute();
     }
 
+    @SuppressLint("StaticFieldLeak")
     class getData extends AsyncTask<String, String, String> {
 
         private String diffUrl;
         HttpsURLConnection urlConnection = null;
 
-        public getData(String diffUrl) {
+        getData(String diffUrl) {
             this.diffUrl = diffUrl;
         }
 
@@ -75,13 +70,6 @@ public class DiffActivity extends AppCompatActivity {
 
         @Override
         protected void onPostExecute(String result) {
-//            try {
-//                JSONArray jsonArray = new JSONArray(result);
-//                JSONObject jsonObject = jsonArray.getJSONObject(0);
-//                diff.setText(jsonObject.getString("diff"));
-//            } catch (JSONException e) {
-//                e.printStackTrace();
-//            }
             diff.setText(result);
         }
     }
